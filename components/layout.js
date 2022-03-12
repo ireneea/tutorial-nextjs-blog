@@ -37,7 +37,7 @@ export default function Layout({children, pageTitle, home}) {
                             className={utilStyles.borderCircle}
                             height={144}
                             width={144}
-                            alt={name}
+                            alt={ownerName}
                         />
                         <h1 className={utilStyles.heading2Xl}>{ownerName}</h1>
                     </>
