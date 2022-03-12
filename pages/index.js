@@ -1,19 +1,43 @@
 import Link from 'next/link';
 
+import {getSortedPostsData} from '../lib/posts';
+
 import utilStyles from "../styles/util.module.css";
 import Layout from "../components/layout";
 
-export default function Home() {
+export default function Home({allPostsData}) {
     return (
         <Layout pageTitle="Learn Next Apps" home={true}>
             <section className={utilStyles.headingMd}>
                 <p>Hello, I'm <b>Irénée</b>. I'm a software software engineer playing around with new techs</p>
+            </section>
 
-                <Link href="/posts/first-post">
-                    <a>First post</a>
-                </Link>
+            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+                <h2 className={utilStyles.headingLg}>Blog</h2>
+
+                <ul className={utilStyles.list}>
+                    {
+                        allPostsData.map(({id, date, title}) => (<li className={utilStyles.listItem} key={id}>
+                            {title}
+                            <br/>
+                            {id}
+                            <br/>
+                            {date}
+                        </li>))
+                    }
+                </ul>
+
             </section>
         </Layout>
     )
 }
 
+export async function getStaticProps() {
+    const allPostsData = getSortedPostsData();
+
+    return {
+        props: {
+            allPostsData
+        }
+    }
+}
