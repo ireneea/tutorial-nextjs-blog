@@ -1,23 +1,19 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Link from 'next/link';
+
+import utilStyles from "../styles/util.module.css";
 import Layout from "../components/layout";
 
 export default function Home() {
     return (
-        <Layout>
-            <Head>
-                <title>Learn Next App</title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
+        <Layout pageTitle="Learn Next Apps" home={true}>
+            <section className={utilStyles.headingMd}>
+                <p>Hello, I'm <b>Irénée</b>. I'm a software software engineer playing around with new techs</p>
 
-            <main>
-                <h1 className="title">
-                    Read {' '}
-                    <Link href="/posts/first-post"><a>First post page</a>
-                    </Link>
-                </h1>
-
-            </main>
+                <Link href="/posts/first-post">
+                    <a>First post</a>
+                </Link>
+            </section>
         </Layout>
     )
 }
+
