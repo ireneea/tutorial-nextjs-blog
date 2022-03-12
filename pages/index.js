@@ -1,13 +1,18 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 import {getSortedPostsData} from '../lib/posts';
 
 import utilStyles from "../styles/util.module.css";
-import Layout from "../components/layout";
+import Layout, {ownerName} from "../components/layout";
+import Date from "../components/date";
 
 export default function Home({allPostsData}) {
     return (
         <Layout pageTitle="Learn Next Apps" home={true}>
+            <Head>
+                <title>{ownerName}</title>
+            </Head>
             <section className={utilStyles.headingMd}>
                 <p>Hello, I'm <b>Irénée</b>. I'm a software software engineer playing around with new techs</p>
             </section>
@@ -17,16 +22,22 @@ export default function Home({allPostsData}) {
 
                 <ul className={utilStyles.list}>
                     {
-                        allPostsData.map(({id, date, title}) => (<li className={utilStyles.listItem} key={id}>
-                            {title}
-                            <br/>
-                            {id}
-                            <br/>
-                            {date}
-                        </li>))
+                        allPostsData.map(({id, date, title}) => (
+                            <li className={utilStyles.listItem} key={id}>
+                                <Link href={`/posts/${id}`}>
+                                    <a>
+                                        {title}
+                                    </a>
+                                </Link>
+                                <br/>
+
+                                <small className={utilStyles.lightText}>
+                                    <Date dateString={date}/>
+                                </small>
+                            </li>)
+                        )
                     }
                 </ul>
-
             </section>
         </Layout>
     )

@@ -12,7 +12,6 @@ export default function Layout({children, pageTitle, home}) {
     return (
         <div className={styles.container}>
             <Head>
-                <title>{pageTitle}</title>
                 <link rel="icon" href="/student.ico"/>
                 <meta
                     name="description"
