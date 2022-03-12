@@ -4,11 +4,16 @@ import Link from 'next/link';
 
 import styles from './layout.module.css';
 import utilStyles from '../styles/util.module.css';
+import {ReactChildren} from "react";
 
 export const ownerName = "Irenee";
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({children, pageTitle, home}) {
+type LayoutProps = React.PropsWithChildren<{
+    home?: boolean;
+}>
+
+export default function Layout({children, home = false}: LayoutProps) {
     return (
         <div className={styles.container}>
             <Head>

@@ -9,7 +9,7 @@ import Date from "../components/date";
 
 export default function Home({allPostsData}) {
     return (
-        <Layout pageTitle="Learn Next Apps" home={true}>
+        <Layout home={true}>
             <Head>
                 <title>{ownerName}</title>
             </Head>
